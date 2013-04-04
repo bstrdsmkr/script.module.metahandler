@@ -489,6 +489,7 @@ class MetaData:
         meta['premiered'] = ''
         meta['backdrop_url'] = ''
         meta['overlay'] = 6
+        return meta
 
 
     def _string_compare(self, s1, s2):
@@ -1831,7 +1832,7 @@ class MetaData:
         else:
             try:
                 episode = tvdb.get_episode_by_season_ep(tvdb_id, season, episode)
-            except:
+            except Exception, e:
                 addon.log('************* Error retreiving from thetvdb.com: %s ' % e, 4)
                 episode = None
                 pass
